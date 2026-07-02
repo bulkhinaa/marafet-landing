@@ -63,7 +63,20 @@ export function DownloadSection() {
             даже за его друзей.
           </p>
 
-          {/* Buttons */}
+          {/* Плашка вместо кнопок: приложение ещё не опубликовано в сторах */}
+          <div className="inline-flex items-center gap-2.5 rounded-2xl bg-white/[0.08] px-6 py-4 ring-1 ring-inset ring-white/20 backdrop-blur">
+            <span className="relative flex h-2.5 w-2.5">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent-40 opacity-75" />
+              <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-accent-40" />
+            </span>
+            <span className="font-display text-base font-bold text-white">
+              Скоро в App Store и Google Play
+            </span>
+          </div>
+
+          {/* Кнопки сторов скрыты: ссылки вели в никуда (href="#"), приложение
+              не опубликовано. Вернуть с реальными URL после релиза. */}
+          {false && (
           <div className="flex flex-wrap items-center justify-center gap-4">
             <a
               href="#"
@@ -150,6 +163,7 @@ export function DownloadSection() {
               </div>
             </div>
           </div>
+          )}
         </motion.div>
       </Container>
     </Section>

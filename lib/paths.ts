@@ -12,6 +12,8 @@ export function assetPath(path: string): string {
   return `${BASE_PATH}${clean}`;
 }
 
-/** Внешняя ссылка на лендинг Марафет Пространства (B2B для коворкингов/салонов) */
+/** Экосистема: 3 лендинга */
 export const PROSTRANSTVA_URL =
   "https://bulkhinaa.github.io/marafet-landing-prostranstva/";
+export const PARTNERKA_URL =
+  "https://bulkhinaa.github.io/marafet-landing-partnerka/";

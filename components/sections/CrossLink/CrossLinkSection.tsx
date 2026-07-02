@@ -57,7 +57,7 @@ export function CrossLinkSection() {
               </h2>
 
               <p className="max-w-xl text-base leading-relaxed text-white/80 md:text-lg">
-                Подключите площадку к экосистеме Марафет — приведём поток
+                Подключите площадку к экосистеме Марафет. Приведём поток
                 мастеров и клиентов, дадим CRM, аналитику и поддержку. Подключение
                 бесплатное, платите только % с записей через приложение.
               </p>
@@ -73,7 +73,7 @@ export function CrossLinkSection() {
                 </li>
                 <li className="flex items-start gap-2.5">
                   <Sparkles className="mt-0.5 h-4 w-4 shrink-0 text-magenta-50" />
-                  Экономия ~1 500 000 ₽/год — CRM, реклама и админ на нас
+                  Экономия ~1 500 000 ₽/год: CRM, реклама и админ на нас
                 </li>
               </ul>
 
@@ -120,7 +120,7 @@ export function CrossLinkSection() {
                     ~1 500 000 ₽
                   </p>
                   <p className="mt-2 text-xs text-white/75">
-                    CRM, реклама, админ, рекрутинг — на нас
+                    CRM, реклама, админ, рекрутинг. На нас.
                   </p>
                 </div>
               </div>

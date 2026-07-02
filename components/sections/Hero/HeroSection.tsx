@@ -1,9 +1,12 @@
 "use client";
 
+import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
-import { Heart, Sparkles } from "lucide-react";
+import { Heart, Sparkles as SparklesIcon } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { ShimmerText } from "@/components/ui/ShimmerText";
+import { Sparkles } from "@/components/ui/Sparkles";
+import { assetPath } from "@/lib/paths";
 
 export function HeroSection() {
   const prefersReducedMotion = useReducedMotion();
@@ -39,6 +42,17 @@ export function HeroSection() {
         }}
       />
 
+      {/* Sparkles overlay — только на desktop, лёгкий слой */}
+      <div className="pointer-events-none absolute inset-0 -z-0 hidden md:block">
+        <Sparkles
+          count={10}
+          color="rgba(255,255,255,0.85)"
+          minSize={1}
+          maxSize={3}
+          className="absolute inset-0"
+        />
+      </div>
+
       <Container
         size="xl"
         className="relative pt-32 pb-20 md:pt-40 md:pb-28 lg:pt-44 lg:pb-32"
@@ -52,7 +66,7 @@ export function HeroSection() {
             className="flex flex-col gap-7"
           >
             <span className="inline-flex w-fit items-center gap-2 rounded-full bg-white/10 px-3 py-1.5 text-xs font-bold uppercase tracking-[0.18em] text-white/85 ring-1 ring-inset ring-white/20 backdrop-blur">
-              <Sparkles className="h-3.5 w-3.5 text-magenta-50" />
+              <SparklesIcon className="h-3.5 w-3.5 text-magenta-50" />
               Бьюти-приложение
             </span>
 
@@ -72,7 +86,7 @@ export function HeroSection() {
 
             <p className="max-w-2xl text-pretty text-base leading-relaxed text-white/75 md:text-lg">
               Откройте мастеров рядом, выбирайте по работам и оценкам, записывайтесь
-              в пару кликов. А если вы мастер — управляйте расписанием, следите за
+              в пару кликов. А если вы мастер, управляйте расписанием, следите за
               доходом и развивайте клиентскую базу в одном приложении.
             </p>
 
@@ -112,7 +126,7 @@ export function HeroSection() {
             <p className="flex items-start gap-2 text-sm text-white/55 md:text-base">
               <Heart className="mt-0.5 h-4 w-4 shrink-0 fill-rose-50 text-rose-50" />
               <span>
-                Лайк мастеру — двойным кликом. Напоминания — сами. Бонусы — за
+                Лайк мастеру: двойным кликом. Напоминания: сами. Бонусы: за
                 каждого приглашённого <span className="text-white/40">(и даже за
                 «друзей друзей»)</span>.
               </span>
@@ -189,9 +203,8 @@ function GooglePlayGlyph() {
 }
 
 /**
- * Стилизованный mockup телефона с упрощённой версткой "ленты мастеров".
- * Эта версия не зависит от внешних изображений — все элементы рисуются стилями.
- * При наличии скрина из Figma — заменяется на <Image src={...} />.
+ * Реальный скрин приложения (screen-home.png из Figma) в телефонной рамке.
+ * Floating-бэйджи поверх — для wow-эффекта.
  */
 function PhoneMockup() {
   return (
@@ -202,65 +215,22 @@ function PhoneMockup() {
         className="pointer-events-none absolute inset-0 -z-10 scale-110 rounded-[60px] bg-gradient-to-br from-accent-60/40 via-magenta-60/40 to-rose-60/30 blur-3xl"
       />
 
-      {/* Phone frame */}
-      <div className="relative mx-auto aspect-[9/19] w-full max-w-[340px] rounded-[44px] bg-gradient-to-b from-ink-90 to-black p-2 shadow-[0_50px_120px_-30px_rgba(0,0,0,0.7)] ring-1 ring-white/10">
-        {/* Screen */}
-        <div className="relative h-full overflow-hidden rounded-[36px] bg-gradient-to-br from-[#0d0a1a] via-[#1a1230] to-[#0d0a1a]">
-          {/* Notch */}
-          <div className="absolute left-1/2 top-1.5 z-10 h-5 w-24 -translate-x-1/2 rounded-full bg-black" />
-
-          {/* App content — feed of masters */}
-          <div className="relative h-full overflow-hidden p-3 pt-10">
-            {/* Status bar */}
-            <div className="mb-3 flex items-center justify-between px-2 text-[10px] font-bold text-white/90">
-              <span>9:41</span>
-              <div className="flex items-center gap-1">
-                <span className="h-1.5 w-1.5 rounded-full bg-white/70" />
-                <span className="h-1.5 w-1.5 rounded-full bg-white/70" />
-                <span className="h-1.5 w-1.5 rounded-full bg-white/70" />
-              </div>
-            </div>
-
-            {/* Header */}
-            <div className="mb-3 px-1">
-              <p className="text-[10px] uppercase tracking-wider text-white/40">
-                Мастера рядом
-              </p>
-              <h3 className="font-display text-lg font-bold leading-tight text-white">
-                Москва · 2 км
-              </h3>
-            </div>
-
-            {/* Master cards */}
-            <div className="flex flex-col gap-2.5">
-              <MasterCard
-                name="Анна К."
-                service="Маникюр"
-                price="2 700 ₽"
-                rating={5.0}
-                next="через 30 мин"
-                accent="accent"
-              />
-              <MasterCard
-                name="Виктория М."
-                service="Брови"
-                price="1 800 ₽"
-                rating={4.9}
-                next="через 1 ч"
-                accent="magenta"
-              />
-              <MasterCard
-                name="Дарья В."
-                service="Стрижка"
-                price="3 500 ₽"
-                rating={5.0}
-                next="завтра 10:00"
-                accent="rose"
-                isNew
-              />
-            </div>
-          </div>
-        </div>
+      {/* Phone frame — Image с явными width/height, без aspect-ratio inheritance */}
+      <div
+        className="relative mx-auto inline-block rounded-[44px] bg-gradient-to-b from-ink-90 to-black p-2 shadow-[0_50px_120px_-30px_rgba(0,0,0,0.7)] ring-1 ring-white/10"
+        style={{ maxWidth: "85vw" }}
+      >
+        <Image
+          src={assetPath("/screens/screen-home.png")}
+          alt="Главный экран приложения Марафет: мастера рядом"
+          width={324}
+          height={702}
+          priority
+          sizes="(max-width: 768px) 85vw, 324px"
+          className="block h-auto w-[324px] max-w-full rounded-[36px] object-cover"
+        />
+        {/* Notch overlay */}
+        <div className="absolute left-1/2 top-3.5 z-10 h-5 w-24 -translate-x-1/2 rounded-full bg-black" />
       </div>
 
       {/* Floating heart "Like" badge */}
@@ -281,58 +251,3 @@ function PhoneMockup() {
   );
 }
 
-function MasterCard({
-  name,
-  service,
-  price,
-  rating,
-  next,
-  accent,
-  isNew,
-}: {
-  name: string;
-  service: string;
-  price: string;
-  rating: number;
-  next: string;
-  accent: "accent" | "magenta" | "rose";
-  isNew?: boolean;
-}) {
-  const accentMap = {
-    accent: "from-accent-60 to-magenta-60",
-    magenta: "from-magenta-60 to-rose-60",
-    rose: "from-rose-60 to-accent-60",
-  };
-  return (
-    <div className="relative flex items-center gap-2.5 rounded-2xl bg-white/[0.06] p-2.5 ring-1 ring-inset ring-white/10 backdrop-blur-sm">
-      <div
-        className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br ${accentMap[accent]} font-display text-xs font-bold text-white shadow-[0_8px_20px_-6px_rgba(122,84,255,0.5)]`}
-      >
-        {name.charAt(0)}
-      </div>
-      <div className="flex-1 min-w-0">
-        <div className="flex items-center gap-1.5">
-          <p className="truncate text-xs font-bold text-white">{name}</p>
-          {isNew && (
-            <span className="rounded-full bg-rose-60/30 px-1.5 py-0.5 text-[8px] font-bold uppercase tracking-wider text-rose-50">
-              new
-            </span>
-          )}
-        </div>
-        <p className="truncate text-[10px] text-white/55">
-          {service} · {price}
-        </p>
-        <p className="mt-0.5 text-[9px] font-medium text-magenta-50">{next}</p>
-      </div>
-      <div className="flex shrink-0 flex-col items-end gap-0.5">
-        <div className="flex items-center gap-0.5">
-          <svg className="h-2.5 w-2.5 fill-warning" viewBox="0 0 24 24">
-            <path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z" />
-          </svg>
-          <span className="text-[10px] font-bold text-white">{rating}</span>
-        </div>
-        <div className="h-1.5 w-1.5 rounded-full bg-success" />
-      </div>
-    </div>
-  );
-}

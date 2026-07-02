@@ -111,14 +111,18 @@ export function FooterSection() {
         {/* Bottom */}
         <div className="mt-12 flex flex-col items-start justify-between gap-3 border-t border-white/10 pt-6 text-xs text-white/45 md:flex-row md:items-center">
           <p>© {new Date().getFullYear()} Марафет. Все права защищены.</p>
-          <div className="flex flex-wrap items-center gap-4">
-            <a href="#" className="transition-colors hover:text-white/75">
-              Политика конфиденциальности
-            </a>
-            <a href="#" className="transition-colors hover:text-white/75">
-              Пользовательское соглашение
-            </a>
-          </div>
+          {/* Юр-ссылки скрыты: документы ещё не опубликованы (href="#" вели в никуда).
+              Вернуть с реальными страницами. */}
+          {false && (
+            <div className="flex flex-wrap items-center gap-4">
+              <a href="#" className="transition-colors hover:text-white/75">
+                Политика конфиденциальности
+              </a>
+              <a href="#" className="transition-colors hover:text-white/75">
+                Пользовательское соглашение
+              </a>
+            </div>
+          )}
         </div>
       </Container>
     </footer>

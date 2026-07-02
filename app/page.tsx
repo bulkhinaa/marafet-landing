@@ -1,6 +1,7 @@
 import { StickyNav } from "@/components/ui/StickyNav";
 import { HeroSection } from "@/components/sections/Hero/HeroSection";
 import { ForClientsSection } from "@/components/sections/ForClients/ForClientsSection";
+import { AppShowcaseSection } from "@/components/sections/AppShowcase/AppShowcaseSection";
 import { HowItWorksSection } from "@/components/sections/HowItWorks/HowItWorksSection";
 import { ForMastersSection } from "@/components/sections/ForMasters/ForMastersSection";
 import { ComingSoonSection } from "@/components/sections/ComingSoon/ComingSoonSection";
@@ -15,6 +16,7 @@ export default function Home() {
       <main className="overflow-x-hidden">
         <HeroSection />
         <ForClientsSection />
+        <AppShowcaseSection />
         <HowItWorksSection />
         <ForMastersSection />
         <ComingSoonSection />
